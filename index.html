@@ -1,0 +1,226 @@
+<!-- =========================
+FILE: index.html
+========================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SplitIt — Smart Expense Splitter</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div class="loader" id="loader">
+    <div class="loader-ring"></div>
+    <h1>NovaSplit</h1>
+  </div>
+
+  <!-- ANIMATED BACKGROUND -->
+  <div class="bg-blobs">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar glass">
+    <div class="logo">
+      <h2>⚡ SplitIt</h2>
+      <p>Split Smarter. Live Better.</p>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#groups">Groups</a>
+      <a href="#analytics">Analytics</a>
+      <a href="#history">History</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeToggle">🌙</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        Premium <span>Expense Splitting</span><br/>
+        Made Beautiful
+      </h1>
+
+      <p>
+        Create groups, add members, split expenses,
+        and settle balances instantly — all offline.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="primary-btn" id="createGroupHero">
+          Create Group
+        </button>
+
+        <button class="secondary-btn" id="exportBtn">
+          Export Data
+        </button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card glass">
+          <h2 id="totalGroups">0</h2>
+          <p>Groups</p>
+        </div>
+
+        <div class="stat-card glass">
+          <h2 id="totalMembers">0</h2>
+          <p>Members</p>
+        </div>
+
+        <div class="stat-card glass">
+          <h2 id="totalExpenses">₹0</h2>
+          <p>Total Expenses</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-preview glass">
+      <div class="preview-card floating">
+        <h3>Recent Settlement</h3>
+        <p>Rahul owes Ayesha</p>
+        <h2>₹1,250</h2>
+      </div>
+
+      <div class="preview-card floating delay">
+        <h3>Monthly Spend</h3>
+        <h2>₹12,420</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="section">
+    <div class="section-header">
+      <h2>Dashboard</h2>
+      <button class="primary-btn" id="newGroupBtn">
+        + New Group
+      </button>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <div class="dashboard-card glass">
+        <h3>Total Spent</h3>
+        <h1 id="dashboardTotal">₹0</h1>
+      </div>
+
+      <div class="dashboard-card glass">
+        <h3>Monthly Expenses</h3>
+        <canvas id="expenseChart"></canvas>
+      </div>
+
+      <div class="dashboard-card glass">
+        <h3>Expense Categories</h3>
+        <div class="pie-chart" id="pieChart"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GROUPS -->
+  <section id="groups" class="section">
+    <div class="section-header">
+      <h2>Your Groups</h2>
+
+      <input
+        type="text"
+        id="groupSearch"
+        placeholder="Search groups..."
+      />
+    </div>
+
+    <div class="groups-grid" id="groupsContainer">
+      <div class="empty-state glass">
+        <h2>No Groups Yet</h2>
+        <p>Create your first expense group.</p>
+
+        <button class="primary-btn" id="emptyCreateBtn">
+          Create Group
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYTICS -->
+  <section id="analytics" class="section">
+    <div class="section-header">
+      <h2>Analytics</h2>
+    </div>
+
+    <div class="analytics-grid">
+
+      <div class="glass analytics-card">
+        <h3>Top Contributors</h3>
+        <div id="contributors"></div>
+      </div>
+
+      <div class="glass analytics-card">
+        <h3>Settlement Overview</h3>
+        <div id="settlements"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRANSACTION HISTORY -->
+  <section id="history" class="section">
+    <div class="section-header">
+      <h2>Transaction History</h2>
+
+      <input
+        type="text"
+        id="historySearch"
+        placeholder="Search expenses..."
+      />
+    </div>
+
+    <div class="history-list" id="historyList"></div>
+  </section>
+
+  <!-- ACTION BUTTONS -->
+  <div class="fab-container">
+    <button class="fab" id="addExpenseFab">＋</button>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal glass" id="modalContent"></div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- IMPORT FILE -->
+  <input type="file" id="importInput" hidden />
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <h2>NovaSplit</h2>
+    <p>Premium Offline Expense Splitting Experience</p>
+
+    <div class="footer-buttons">
+      <button class="secondary-btn" id="importBtn">
+        Import Backup
+      </button>
+
+      <button class="danger-btn" id="resetBtn">
+        Reset App
+      </button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
